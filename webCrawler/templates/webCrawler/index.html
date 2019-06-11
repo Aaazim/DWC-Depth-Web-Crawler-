@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Build your Data</title>
+</head>
+<script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<body>
+
+Enter URL:
+<input type="text" name="url" placeholder="Enter URL" id="entered_url">
+Enter Depth:
+<input type="text" name="depth" placeholder="Enter Depth" id="entered_depth">
+<input type="submit" id="button_1">
+
+    <script type="text/javascript">
+    $('#button_1').click(function(){
+    var catid;
+    catid = $('#entered_url').val()
+    depthid = $('#entered_depth').val()
+    $.ajax(
+    {
+        type:"GET",
+        url: "/likepost",
+        data:{
+                 post_id: catid,
+                 depthid: depthid
+        },
+        success: function( data ) 
+        {
+            alert(data);
+            $("#getter").html(JSON.stringify(data))
+        }
+     })
+});
+    
+</script>
+<div id="getter"></div>
+</body>
+</html>
